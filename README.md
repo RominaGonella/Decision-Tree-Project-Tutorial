@@ -1,1 +1,8 @@
-# Template for Machine Learning projects
+# Resumen del proceso
+
+1. El conjunto de datos proviene originalmente del Instituto Nacional de Diabetes y Enfermedades Digestivas y Renales. El objetivo es predecir en base a medidas diagnósticas si un paciente tiene diabetes o no utilizando modelos de tipo Decision Trees, en particular árboles de clasificación.
+2. En primer lugar se importan librerías y se cargan los datos de la web. El dataset contiene 9 variables (1 target y 8 predictoras) y 768 observaciones.
+3. Primero se divide la muestra en train y test, y se realiza el análisis exploratorio de la muestra train, detectando algunos valores anómalos en las variables glucosa, presión sanguínea e índice de masa corporal. En total son 28 observaciones con alguna nomalía en estas variables, por lo que se deciden eliminarlas del dataset. Se observa que todas las variables parecen influir de alguna manera sobre la variable target, y a su vez no presentan una correlación demasiado alta entre ellas, por lo que se mantienen todas. Se guarda el dataset procesado.
+4.  Se ajusta un primer modelo con los parámetros asignados por defecto y luego otro modelo definiendo como criterio de división la entropia (por defecto es Gini). Se evalúan ambos modelos en el datset de prueba (test), obteniéndose mejores resultados al utilizar Gini.
+5. Luego se optimizan algunos hiperparámetros mediante cross validation, como ser el criterio de separación (se consideran las tres opciones que ofrece la función), la profundidad máxima del árbol, la cantidad mínima de observaciones admitidas por hoja, y la cantidad mínima de observaciones necesarias para poder realizar una división del nodo. Se obtiene la mejor combinación y se estima y guarda el modelo final.
+6. El ejercicio finaliza al crear un pipeline en app.py con el código indispensable (sólo se estima modelo final, no los intermedios).
